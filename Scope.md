@@ -4,10 +4,10 @@
 * js has function scope only*
   ** not always the case
 * thinking like a js compiler:
-  ** takes a top down approach
-    ** makes a best guess of what you are doing
-  ** makes a few passes thru the code:
-    ** first pass finds the variables
+  * takes a top down approach
+    * makes a best guess of what you are doing
+  * makes a few passes thru the code:
+    * first pass finds the variables
     ```
 
     var foo = "bar";
@@ -26,8 +26,8 @@
       * global scope
       * string value of a single js statement
       * but it's actually 2 separate declaration
-        ** var foo
-        ** = "bam";
+        * var foo
+        * = "bam";
 
     2) function bar() {
       var foo = "baz";
@@ -47,13 +47,13 @@
 
     5) bam becomes created in the global scope (as long as it is not in 'strict mode' -- then it doesn't exist because it is 'undeclared' -- which means there is no LHS assignment)
 
-  ##Compiler Talk
+  **Compiler Talk**
   LHS - left hand side of assignment (target)
     * where does this exist in scope?
   RHS - right hand side of assignment (source)
 
 ASIDE:
-  ###function declaration
+  ***function declaration***
   ```
 
   function baz(foo) {
@@ -65,7 +65,7 @@ ASIDE:
     * function name is visible within it's scope and the scope of it's parent
     * load before any code is execute
 
-  ### function expression
+  ***function expression***
   ```
 
   var a = function(a,b) {
@@ -79,7 +79,7 @@ ASIDE:
 
     * there will be more info later
 
-##Scope and Execution Example
+**Scope and Execution Example**
 
 ```
 
@@ -102,8 +102,8 @@ baz(); // global scope has never heard of it and give us a reference error. baz 
 
 ```
 
-##Function Scope?
-###function declaration and function expression
+**Function Scope?**
+***function declaration and function expression***
 
 ```
 var foo = function bar() {
@@ -122,16 +122,16 @@ bar(); // Error!
 
 ```
 
-It is a **declaration** if the first thing in the statement is the word "function". Otherwise it is an **expression**.
+It is a ***declaration*** if the first thing in the statement is the word "function". Otherwise it is an ***expression***.
 
-##Anonymous function expressions are bad:
+**Anonymous function expressions are bad:**
 1) no way inside of the function to refer to ourself, like in recursion or in a click handler. with a name, it's easy to refer to the function.
 
 2) anonymous functions don't play well in debugging. Give it a name, the name comes up in debugging stack tracings.
 
 3) Self documents code. Makes the code more understandable.
 
-##Block Scope
+**Block Scope**
 
 ```
 var foo;
@@ -148,11 +148,11 @@ console.log(err)  // ReferenceError
 ```
 * catch clause is block scoped (not available outside of the block)
 
-## Lexical Scope
+**Lexical Scope**
 
 * what does lexical mean?
-  ** parsing stage is called lexing or compile time scope
-  ** like going up the floors of a building searching for a particular place
+  * parsing stage is called lexing or compile time scope
+  * like going up the floors of a building searching for a particular place
 
   ```
   function foo() {
