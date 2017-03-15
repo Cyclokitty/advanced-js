@@ -170,3 +170,137 @@ console.log(err)  // ReferenceError
 
   * lexical scope of baz is inside of foo and won't be changed at run time
   * lexical scoping means it knows exactly where all the functions and variables are
+
+  **Eval keyword**
+
+  * pronounced evil
+  * treats the string contents as if it was code
+
+  ```
+
+  var bar = 'bar';
+
+  function foo(str) {
+    eval(str); //cheating!!
+    console.log(bar); //42
+  }
+
+  foo("var bar = 42;");
+
+  ```
+
+  * makes the runtime slower
+  * never use eval
+
+  * worse way to cheat lexical scope
+    * with keyword
+
+    ```
+    var obj = {
+      a: 2,
+      b: 3,
+      c: 4
+    };
+
+    obj.a = obj.b + obj.c;
+    obj.c = obj.b - obj.a;
+
+    with (obj) {
+      a = b + c;
+      d = b - a;
+      d = 3; // ?
+    }
+
+    obj.d // undefined
+    d; // 3 -- oops!
+
+    ```
+
+  * with is more evil than eval
+  * with creates a whole lexical scope at runtime than eval
+  * in strict mode, with keyword disallowed
+
+  *IIFE*
+
+  * immediately invoked function expression
+
+  ```
+
+  var foo = 'foo';
+
+  (function() {
+
+    var foo = 'foo2';
+    console.log(foo); // 'foo2'
+
+  })();
+
+  console.log(foo); // 'foo'
+
+  ```
+  * can hide scope with a function
+    * avoid name leakage with an anonymous function declaration wrapper
+    * foo now available in global and local scope
+  * the function is immediately invoked
+  * name your IIFEs
+  * it's run once it's reached in the code
+  * also makes it global
+
+  ```
+  var foo = 'foo';
+
+  (function(bar) {
+
+    var foo = bar;
+    console.log(foo); // 'foo'
+
+  })(foo);
+
+  console.log(foo); // 'foo'
+
+  ```
+
+  *IIFE pattern*
+
+  * es6 block scope!
+    * let
+      * hijacks the scope
+      * attaches the variable to the block it appears in rather than the function
+
+  ```
+  function foo() {
+    var bar = 'bar';
+    for (let i = 0; i < bar.length; i++) {
+      console.log(bar.charAt(i));
+    }
+    console.log(i); // ReferenceError
+  }
+
+  ```
+
+  * you get the letters of bar printed to console but the console.log outside of the for block is beyond the reach of i
+  * we only intend the i for the for loop and no where else so we limit it's reach to the for loop
+  * had we used var i = 0 then i can be reached
+
+  ```
+  function foo(bar) {
+    if (bar) {
+      let baz = bar;
+      if (baz) {
+        let bam = baz;
+      }
+      console.log(bam); // Error
+    }
+    console.log(baz); // Error
+  }
+
+  foo('bar');
+
+  ```
+
+  * the console.log cannot reach the values of baz and bam because they are outside of the block scope of the if statement
+
+  **problems with let**
+
+  * let keyword does not hoist
+  * adds an extra mental tax for refactoring about thinking about block scoping
