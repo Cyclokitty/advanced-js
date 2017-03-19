@@ -303,4 +303,169 @@ console.log(err)  // ReferenceError
   **problems with let**
 
   * let keyword does not hoist
+    * lets only work in sequence in the block
+    * you have to write them out at the top to "hoist" them
   * adds an extra mental tax for refactoring about thinking about block scoping
+  * implicit block scoping (which let does), that's usually harder to maintain than explicit scoping
+
+  * example of a let block:
+
+  ```
+
+  function foo(bar) {
+    let (baz = bar) {
+      console.log(baz); // 'bar'
+    }
+    console.log(baz); // Error
+  }
+
+  foo('bar');
+
+  ```
+
+  * we create an explicit block and the let exists only in this block
+  * there's a major problem: this is not official
+
+  * a work around:
+
+  ```
+
+  function foo(bar) {
+    { let baz = bar;
+      console.log(baz); // 'bar'
+    }
+    console.log(baz); // Error
+  }
+
+  foo('bar');
+
+  ```
+
+  **Dynamic Scope**
+
+  * theoretical dynamic scoping
+
+  ```
+
+  function foo() {
+    console.log(bar); // dynamic!
+  }
+
+  function baz() {
+    var bar = 'bar';
+    foo();
+  }
+
+  baz();
+
+  ```
+
+  * in dynamic scoping, it happens at run time unlike in lexical scoping when it happens at author time
+
+  **Quiz**
+
+  1) What types of scoping rule(s) does Javascript have? Exceptions?
+
+    * lexical scoping
+    * exceptions:
+      * eval and with keywords
+
+  2) What the different ways you can create a new scope?
+
+    * function
+    * try/catch
+    * let block scoping
+
+  3) What's the difference between undeclared and undefined?
+
+    * undeclared means the variable was not made at author time (you get back a refernce error)
+    * undefined means it doesn't have a value (you get back and undefined error)
+
+  **Hoisting**
+
+  * the concept of hoisting:
+    * declarations of variable and declarations of functions are hoisted to the top of the code
+    * in actuality, they get handled during the compile phase (LHS is happening at compile time)
+
+    ```
+
+    var a = b();
+    var c = d();
+    a;
+    c;
+
+    function b() {
+      return c;
+    }
+
+    var d = function() {
+      return b();
+    };
+
+    ````
+
+    at compile becomes:
+
+    ```
+
+    function b() {
+      return c;
+    }
+
+    var a;
+    var c;
+    var d;
+    a = b();
+    c = d();
+    a;
+    c;
+    d = function() {
+      return b();
+    };
+
+    ```
+
+    * how do we know functions are compliled first?
+
+    ```
+
+    foo(); // "foo"
+
+    var foo = 2; // this gets ignored
+
+    function foo() {
+      console.log('bar');
+    }
+
+    function foo() {
+      console.log('foo');
+    }
+
+    ```
+
+    **Recursion**
+
+    * where a function is called again until it is not
+
+    * mutual recursion:
+      * two or more functions called each other
+      * would be impossible to use without hoisting
+
+      ```
+
+      a(1);
+
+      function a(foo) {
+        if (foo > 20) return foo;
+        return b(foo + 2);
+      }
+
+      function b(foo) {
+        return c(foo) + 1;
+      }
+
+      function c(foo) {
+        return a(foo * 2);
+      }
+
+      ```
