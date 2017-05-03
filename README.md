@@ -20,3 +20,7 @@ Advanced Javascript Study
 
 ## You Don't Know Javascript (YDKJS)
   * notes and scripts from the excellent series
+
+## TDD (Test Driven Development)
+  * learning all about test driven development using Mocha and Chai
+  
