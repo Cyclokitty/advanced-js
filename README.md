@@ -24,3 +24,9 @@ Advanced Javascript Study
 ## TDD (Test Driven Development)
   * learning all about test driven development using Mocha and Chai
   
+  ## Using Mocha and Chai
+    * [Mocah](https://mochajs.org/)
+    * [Chai](http://chaijs.com/)
+
+  **Instead of Adding another file here see:**
+  see [Mocha-Chai-Tester repo](https://github.com/Cyclokitty/Mocha-Chai-Tester)
