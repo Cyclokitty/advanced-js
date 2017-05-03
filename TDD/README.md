@@ -2,7 +2,7 @@ Test Driven Development
 =======================
 
 ## Using Mocha and Chai
-  * [Mocah](https://mochajs.org/)
+  * [Mocha](https://mochajs.org/)
   * [Chai](http://chaijs.com/)
 
 **Instead of Adding another file here see:**
