@@ -10,6 +10,8 @@ Algos:
 
 [Basic FCC](https://github.com/Cyclokitty/fccAlgos/tree/master/basicAlgos)
 
+[Intermediate Algos]()
+
 [Lambda School1](https://github.com/Cyclokitty/lambdaschool)
 [Lambda School2](https://github.com/Cyclokitty/lambdaschool2)
 [Lambda School3](https://github.com/Cyclokitty/lambdaschool3)

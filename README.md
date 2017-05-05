@@ -7,6 +7,7 @@ Advanced Javascript Study
 
 ## Data Structures
   * from "LEARNING JAVASCRIPT DATA STRUCTURES AND ALGORITHMS" by Lolane Groner
+  * from [tutsPlus Data Structures](https://code.tutsplus.com/series/data-structures-in-javascript--cms-772)
 
 ## React Study Guide
   * this section will contain links to my completed React projects (big and small, grand and lowly)
