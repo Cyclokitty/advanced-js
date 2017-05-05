@@ -26,21 +26,81 @@
     ```this._size``` is the number of times data was pushed into the current ```Stack```
 
   ***Methods of a Stack***
+
     ```push(data)```
+
       * every time we add data, we increment++
+
       * every time we add data, we want to keep the data order as it was added
 
-      ```
+    ```
 
-      Stack.prototype.push = function(data) {
-        // increase the size of our storage
-        var size = this._size++;
+    Stack.prototype.push = function(data) {
+      // increase the size of our storage
+      var size = this._size++;
 
-        //assigns size as a key of storage
-        // asigns data as the value of this key
-        this._storage[size] = data;
-      };
+      //assigns size as a key of storage
+      // assigns data as the value of this key
+      this._storage[size] = data;
+    };
 
-      ```
+    ```
 
-    
+    ```pop()```
+
+    * uses stack's current size to get the most recently added data
+    * delete the most recently added data
+    * decrement _this._size by 1
+    * return the most recently deleted data
+
+    ```
+
+    Stack.prototype.pop = function() {
+    var size = this._size,
+      deletedData;
+
+    if (size) {
+        deletedData = this._storage[size];
+
+        delete this._storage[size];
+        this._size--;
+
+        return deletedData;
+    }
+};
+
+    ```
+
+    ```
+
+    function Stack() {
+    this._size = 0;
+    this._storage = {};
+}
+
+Stack.prototype.push = function(data) {
+    var size = ++this._size;
+    this._storage[size] = data;
+};
+
+Stack.prototype.pop = function() {
+    var size = this._size,
+        deletedData;
+
+    if (size) {
+        deletedData = this._storage[size];
+
+        delete this._storage[size];
+        this._size--;
+
+        return deletedData;
+    }
+};
+
+var cats = new Stack();
+
+cats.push('orange');
+
+console.log(cats);
+
+```
