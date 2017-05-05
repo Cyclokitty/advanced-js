@@ -22,4 +22,25 @@
 
     ```
 
-    ```this._storage``` enables each instance of ```Stack```
+    ```this._storage``` is the container for the ```Stack```
+    ```this._size``` is the number of times data was pushed into the current ```Stack```
+
+  ***Methods of a Stack***
+    ```push(data)```
+      * every time we add data, we increment++
+      * every time we add data, we want to keep the data order as it was added
+
+      ```
+
+      Stack.prototype.push = function(data) {
+        // increase the size of our storage
+        var size = this._size++;
+
+        //assigns size as a key of storage
+        // asigns data as the value of this key
+        this._storage[size] = data;
+      };
+
+      ```
+
+    
