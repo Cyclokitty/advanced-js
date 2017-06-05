@@ -22,6 +22,8 @@ function palindrome(word) {
 
 palindrome('bechemel');
 
+// stack useful when we add data sequentially. Can only remove most recent data.
+
 // a more classic way of showing the stack:
 
 // creates a stack
