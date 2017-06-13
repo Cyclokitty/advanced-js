@@ -13,3 +13,8 @@ What is recursion?
   * function calls are popped off the stack whe that function returns a value
   * js does not yet fully support proper tail call optimization
     * js runs the risk of overflowing the call stack when dealing with large data sets
+
+* the call stack then pushes each of the the recursive function calls
+* then the recursive functions are completed until it reaches the base case, and empties the stack as it goes thru it
+
+* best play with Chrome DevTools and set the breakpoints to observe the call stack in action!
