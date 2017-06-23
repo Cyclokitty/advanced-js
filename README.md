@@ -18,6 +18,7 @@ Advanced Javascript Study
   * [create-react-app]( https://github.com/facebookincubator/create-react-app)
   * [Simple React Development in 2017]( https://hackernoon.com/simple-react-development-in-2017-113bd563691f)
   * [big list of react tuts]( https://github.com/markerikson/react-redux-links)
+  * [Gatsby Tut: PWA with React](https://www.gatsbyjs.org/tutorial/)
 
 ## You Don't Know Javascript (YDKJS)
   * notes and scripts from the excellent series
